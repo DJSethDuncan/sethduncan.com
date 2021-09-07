@@ -1,0 +1,10 @@
+.LinkButton {
+    color: #FFF;
+    background: none;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 2px solid #e993ff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #e993ff;
+    margin-right: 5px;
+}

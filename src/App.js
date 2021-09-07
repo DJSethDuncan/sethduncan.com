@@ -1,17 +1,28 @@
 import Title from './components/Title'
+import Box from './components/Box'
+import About from './components/About'
 import Music from './components/Music'
 import Code from './components/Code'
 
-import './App.css';
+import './css/App.css'
+import './css/CRT.css'
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Title></Title>
-      <Music></Music>
-      <Code></Code>
+      <Box>
+        <About></About>
+      </Box>
+      <Box>
+        <Code></Code>
+      </Box>
+      <Box>
+        <Music></Music>
+      </Box>
+      <br /><br />
     </div>
   );
 }
 
-export default App;
+export default App

@@ -2,8 +2,8 @@ import '../css/SectionHeader.css'
 
 function SectionHeader(props) {
     return (
-        <div className="SectionHeader">
-            <h1>{props.title}</h1>
+        <div className='SectionHeader crt'>
+            <h1 className='monoFont'>{props.title}</h1>
         </div>
     )
 }

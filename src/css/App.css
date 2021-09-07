@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto&display=swap');
+
+#root {
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background: #03001e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #fdeff9, #ec38bc, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: rgb(248, 212, 255);
+    font-family: 'Roboto', sans-serif;
+}
+
+.App {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow: auto;
+}
+
+.monoFont {
+    font-family: 'Major Mono Display', monospace;
+}
