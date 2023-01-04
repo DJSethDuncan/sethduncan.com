@@ -5,11 +5,52 @@ html,
 #root {
   height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #242221;
+  font-size: 12px;
+  font-weight: 300;
+  font-family: "Exo 2", Arial, Helvetica, sans-serif;
+}
+
+html a {
+  position: relative;
+  color: #242221;
+  font-size: 12px;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+html a::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #242221;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+html a:hover::before {
+  transform: scaleX(1);
+}
+
+h1 {
+  font-weight: 100;
 }
 
 body {
   margin: 0;
-  background-color: #242221;
+  background-color: #ddd;
+  background: radial-gradient(
+    ellipse at center,
+    #fff 0%,
+    #ddd 75%,
+    #bbb 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
