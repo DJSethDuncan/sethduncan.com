@@ -31,11 +31,11 @@ function App() {
           </p>
           <p>
             <strong>I love collaborating.</strong> I reach for the moments where
-            I discover something new by working with other people.
+            I discover something by working with other people.
           </p>
           <p>
-            <strong>I'm a perpetual student.</strong> Some more information
-            about this thing.
+            <strong>I'm a perpetual student.</strong> I can't stop won't stop
+            learning.
           </p>
         </div>
 
