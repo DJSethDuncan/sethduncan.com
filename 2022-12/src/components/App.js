@@ -1,6 +1,4 @@
 import "../styles/App.css";
-import Logo from "./Logo";
-import Links from "./Links";
 
 function App() {
   return (
@@ -38,11 +36,6 @@ function App() {
             learning.
           </p>
         </div>
-
-        {/* <div className="body"> */}
-        {/* <Logo /> */}
-        {/* <Links /> */}
-        {/* </div> */}
       </div>
     </div>
   );
