@@ -1,5 +1,14 @@
-/* @import url("https://fonts.googleapis.com/css?family=Exo+2"); */
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@100;300&display=swap");
+@font-face {
+  font-family: "Exo 2";
+  src: url("../bin/fonts/Exo2-Light.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Exo 2";
+  src: url("../bin/fonts/Exo2-Thin.ttf") format("truetype");
+  font-weight: thin;
+}
 
 html,
 #root {
