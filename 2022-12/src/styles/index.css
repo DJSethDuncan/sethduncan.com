@@ -1,13 +1,13 @@
 @font-face {
   font-family: "Exo 2";
   src: url("../bin/fonts/Exo2-Light.ttf") format("truetype");
-  font-weight: normal;
+  font-weight: 300;
 }
 
 @font-face {
   font-family: "Exo 2";
   src: url("../bin/fonts/Exo2-Thin.ttf") format("truetype");
-  font-weight: thin;
+  font-weight: 100;
 }
 
 html,
