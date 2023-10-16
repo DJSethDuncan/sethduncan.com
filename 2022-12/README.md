@@ -7,3 +7,7 @@ This site was built to show a minimal amount of information while linking to off
 I wanted the site to look clean and minimal.
 
 I removed links to the blog.
+
+## Development
+
+`npm i && npm start`
