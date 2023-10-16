@@ -1,5 +1,8 @@
 {
-	"dependencies": {
-		"create-react-app": "^5.0.1"
-	}
+  "scripts": {
+    "start": "cd 2022-12 && npm start"
+  },
+  "dependencies": {
+    "create-react-app": "^5.0.1"
+  }
 }
