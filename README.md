@@ -1,6 +1,8 @@
 # SethDuncan.com
 
-I keep all my old sites here.
+I keep all my old sites here. Each site is in its own subfolder. 
+
+The root folder is just for auto-deployment of this repo.
 
 ## Deployment
 
