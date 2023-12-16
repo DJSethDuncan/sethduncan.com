@@ -1,8 +1,6 @@
+import { Link as ReactLink } from "react-router-dom";
+
 import "../styles/Link.css";
 export default function Link(props) {
-  return (
-    <a href={props.link} target={props.external ? "_new" : "_self"}>
-      {props.text}
-    </a>
-  );
+  return <ReactLink to={props.link}>{props.text}</ReactLink>;
 }
