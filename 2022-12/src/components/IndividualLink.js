@@ -1,4 +1,5 @@
 import "../styles/IndividualLink.css";
+
 export default function IndividualLink(props) {
   return (
     <a

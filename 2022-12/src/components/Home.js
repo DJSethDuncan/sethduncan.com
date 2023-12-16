@@ -1,3 +1,5 @@
+import Links from "../components/Links";
+
 export default function Home() {
   return (
     <>
@@ -6,14 +8,7 @@ export default function Home() {
           <p class="headerTitle">Seth Duncan</p>
         </div>
 
-        <div class="titleLinkList">
-          <a href="https://github.com/DJSethDuncan" target="_new">
-            CODE
-          </a>
-          <a href="https://sethduncanmusic.bandcamp.com/" target="_new">
-            MUSIC
-          </a>
-        </div>
+        <Links />
       </header>
       <div class="separator">
         <hr />

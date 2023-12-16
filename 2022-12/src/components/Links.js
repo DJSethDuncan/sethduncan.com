@@ -5,18 +5,23 @@ export default function Links() {
   return (
     <div class="linksContainer">
       <IndividualLink
+        link="https://sethduncan.wordpress.com/"
+        text="Blog"
+        external
+      />
+      <IndividualLink
         link="https://github.com/DJSethDuncan"
-        text="github"
+        text="Code"
         external
       />
       <IndividualLink
         link="https://soundcloud.com/sethduncanmusic"
-        text="soundcloud"
+        text="Music"
         external
       />
       <IndividualLink
         link="https://www.youtube.com/channel/UC2EZLBOo_5SaZjrucDD1RDw"
-        text="youtube"
+        text="Video"
         external
       />
     </div>
