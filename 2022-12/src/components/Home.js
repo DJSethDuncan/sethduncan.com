@@ -7,10 +7,10 @@ export default function Home() {
         </div>
 
         <div class="titleLinkList">
-          <a href="https:github.com/DJSethDuncan" target="_new">
+          <a href="https://github.com/DJSethDuncan" target="_new">
             CODE
           </a>
-          <a href="https:sethduncanmusic.bandcamp.com/" target="_new">
+          <a href="https://sethduncanmusic.bandcamp.com/" target="_new">
             MUSIC
           </a>
         </div>
