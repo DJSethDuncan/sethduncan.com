@@ -1,16 +1,20 @@
 import "../styles/Links.css";
-import Link from "./Link";
+import IndividualLink from "./IndividualLink";
 
 export default function Links() {
   return (
     <div class="linksContainer">
-      <Link link="https://github.com/DJSethDuncan" text="github" external />
-      <Link
+      <IndividualLink
+        link="https://github.com/DJSethDuncan"
+        text="github"
+        external
+      />
+      <IndividualLink
         link="https://soundcloud.com/sethduncanmusic"
         text="soundcloud"
         external
       />
-      <Link
+      <IndividualLink
         link="https://www.youtube.com/channel/UC2EZLBOo_5SaZjrucDD1RDw"
         text="youtube"
         external
