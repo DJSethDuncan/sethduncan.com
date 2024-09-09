@@ -15,7 +15,7 @@ export default function Links() {
         external
       />
       <IndividualLink
-        link="https://soundcloud.com/sethduncanmusic"
+        link="https://sethduncanmusic.bandcamp.com/"
         text="Music"
         external
       />
