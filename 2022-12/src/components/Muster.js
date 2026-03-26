@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Muster() {
   return (
     <div style={{ maxWidth: "680px", margin: "0 auto", padding: "2rem 1rem", lineHeight: "1.6" }}>
@@ -12,6 +14,12 @@ function Muster() {
       </p>
       <p>
         Volunteers reply naturally. Muster handles the rest.
+      </p>
+      <hr style={{ marginTop: "40px", marginBottom: "20px" }} />
+      <p style={{ fontSize: "0.85rem", color: "#888", textAlign: "center" }}>
+        <Link to="/muster/privacy">Privacy Policy</Link>
+        {" · "}
+        <Link to="/muster/terms-and-conditions">Terms and Conditions</Link>
       </p>
     </div>
   );
