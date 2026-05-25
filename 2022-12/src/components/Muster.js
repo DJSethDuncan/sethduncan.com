@@ -16,6 +16,22 @@ function Muster() {
         Volunteers reply naturally. Muster handles the rest.
       </p>
       <hr style={{ marginTop: "40px", marginBottom: "20px" }} />
+      <h2 style={{ fontSize: "1rem", marginBottom: "0.75rem" }}>SMS Program Information</h2>
+      <p style={{ fontSize: "0.9rem" }}>
+        <strong>Program name:</strong> Muster Volunteer Alerts
+      </p>
+      <p style={{ fontSize: "0.9rem" }}>
+        Volunteers are enrolled by an event organizer who has obtained their consent to receive
+        messages. You will receive SMS messages about your volunteer assignments, including shift
+        reminders, scheduling updates, and responses to your questions.
+      </p>
+      <p style={{ fontSize: "0.9rem" }}>
+        Message frequency varies based on your assignments. Msg &amp; Data rates may apply.
+      </p>
+      <p style={{ fontSize: "0.9rem" }}>
+        Reply <strong>STOP</strong> to cancel. Reply <strong>HELP</strong> for help.
+      </p>
+      <hr style={{ marginTop: "20px", marginBottom: "20px" }} />
       <p style={{ fontSize: "0.85rem", color: "#888", textAlign: "center" }}>
         <Link to="/muster/privacy">Privacy Policy</Link>
         {" · "}
