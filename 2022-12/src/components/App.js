@@ -9,6 +9,8 @@ import Wedge from "../components/Wedge";
 import PrivacyWedge from "../components/PrivacyWedge";
 import WedgeTerms from "../components/WedgeTerms";
 import PrivacyTamofishi from "../components/PrivacyTamofishi";
+import Music from "../components/Music";
+import StageIEM from "../components/privacy/StageIEM";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
           <Route path="wedge/privacy" element={<PrivacyWedge />} />
           <Route path="wedge/terms-and-conditions" element={<WedgeTerms />} />
           <Route path="tamofishi/privacy" element={<PrivacyTamofishi />} />
+          <Route path="music" element={<Music />} />
+          <Route path="privacy/stageiem" element={<StageIEM />} />
         </Route>
       </Routes>
     </BrowserRouter>

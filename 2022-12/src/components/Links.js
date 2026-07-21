@@ -14,11 +14,7 @@ export default function Links() {
         text="Code"
         external
       />
-      <IndividualLink
-        link="https://sethduncanmusic.bandcamp.com/"
-        text="Music"
-        external
-      />
+      <IndividualLink link="/music" text="Music" />
       <IndividualLink
         link="https://www.youtube.com/channel/UC2EZLBOo_5SaZjrucDD1RDw"
         text="Video"
