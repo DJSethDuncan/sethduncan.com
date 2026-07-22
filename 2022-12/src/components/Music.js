@@ -65,6 +65,7 @@ export default function Music() {
                 >
                   <img src={track.cover} alt={track.name} />
                   <span className="trackName">{track.name}</span>
+                  {track.note && <span className="trackNote">{track.note}</span>}
                 </button>
               ))}
             </div>

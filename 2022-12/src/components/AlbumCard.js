@@ -25,7 +25,12 @@ export default function AlbumCard({ album, onPlayTrack }) {
               onClick={() => onPlayTrack(index)}
             >
               <span className="albumTrackNumber">{index + 1}</span>
-              <span>{track.name}</span>
+              <span className="albumTrackText">
+                <span className="albumTrackName">{track.name}</span>
+                {track.note && (
+                  <span className="albumTrackNote">{track.note}</span>
+                )}
+              </span>
             </button>
           ))}
         </div>
