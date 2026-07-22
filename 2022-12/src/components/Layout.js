@@ -4,7 +4,13 @@ import "react-jinke-music-player/assets/index.css";
 import { MusicPlayerProvider, useMusicPlayer } from "../context/MusicPlayerContext";
 
 const PersistentPlayer = () => {
-  const { audioLists, playIndex } = useMusicPlayer();
+  const {
+    audioLists,
+    playIndex,
+    getAudioInstance,
+    onAudioPlay,
+    onAudioProgress,
+  } = useMusicPlayer();
 
   if (audioLists.length === 0) return null;
 
@@ -18,6 +24,9 @@ const PersistentPlayer = () => {
       autoPlay
       showMediaSession
       remove={false}
+      getAudioInstance={getAudioInstance}
+      onAudioPlay={onAudioPlay}
+      onAudioProgress={onAudioProgress}
     />
   );
 };
