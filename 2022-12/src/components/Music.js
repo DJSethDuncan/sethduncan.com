@@ -46,28 +46,49 @@ export default function Music() {
       {genres.map((genre) => {
         const genreTracks = tracks.filter((track) => track.genre === genre);
         const genreAlbums = albums.filter((album) => album.genre === genre);
+        const entries = [
+          ...genreAlbums.map((album) => ({ type: "album", album })),
+          ...genreTracks.map((track) => ({ type: "track", track })),
+        ].sort((a, b) => {
+          const yearA = a.type === "album" ? a.album.year : a.track.year;
+          const yearB = b.type === "album" ? b.album.year : b.track.year;
+          return yearB - yearA;
+        });
         return (
           <div className="genreSection" key={genre}>
             <h2 className="genreTitle">{genre}</h2>
             <div className="trackGrid">
-              {genreAlbums.map((album) => (
-                <AlbumCard
-                  key={album.name}
-                  album={album}
-                  onPlayTrack={(index) => playGenre(album.tracks, index)}
-                />
-              ))}
-              {genreTracks.map((track, index) => (
-                <button
-                  key={track.name}
-                  className="trackCard"
-                  onClick={() => playGenre(genreTracks, index)}
-                >
-                  <img src={track.cover} alt={track.name} />
-                  <span className="trackName">{track.name}</span>
-                  {track.note && <span className="trackNote">{track.note}</span>}
-                </button>
-              ))}
+              {entries.map((entry) =>
+                entry.type === "album" ? (
+                  <AlbumCard
+                    key={entry.album.name}
+                    album={entry.album}
+                    onPlayTrack={(index) => playGenre(entry.album.tracks, index)}
+                  />
+                ) : (
+                  <button
+                    key={entry.track.name}
+                    className="trackCard"
+                    onClick={() => playGenre(genreTracks, genreTracks.indexOf(entry.track))}
+                  >
+                    <img src={entry.track.cover} alt={entry.track.name} />
+                    <span className="trackName">{entry.track.name}</span>
+                    <span className="trackYear">{entry.track.year}</span>
+                    {entry.track.note && (
+                      <span className="trackNote">{entry.track.note}</span>
+                    )}
+                    {entry.track.tags.length > 0 && (
+                      <span className="tagList">
+                        {entry.track.tags.map((tag) => (
+                          <span className="tagPill" key={tag}>
+                            {tag}
+                          </span>
+                        ))}
+                      </span>
+                    )}
+                  </button>
+                )
+              )}
             </div>
           </div>
         );

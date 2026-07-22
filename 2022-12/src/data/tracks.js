@@ -6,14 +6,32 @@ const rawTracks = [
     genre: "DJ Sets",
     name: "Finns (DJ Set) - 12.12.2014",
     singer: "Seth Duncan",
+    year: 2014,
     musicSrc:
       "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20Finns%20(DJ%20Set).mp3",
+  },
+  {
+    genre: "DJ Sets",
+    name: "Anfang 1 (DJ Set)",
+    singer: "Seth Duncan",
+    year: 2008,
+    musicSrc:
+      "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20Anfang%201%20(1.1.08).mp3",
+  },
+  {
+    genre: "DJ Sets",
+    name: "Anfang 2 (DJ Set)",
+    singer: "Seth Duncan",
+    year: 2008,
+    musicSrc:
+      "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20Anfang%202.mp3",
   },
 ];
 
 const tracks = rawTracks.map((track) => ({
   ...track,
   cover: track.cover || DEFAULT_COVER,
+  tags: track.tags || [],
 }));
 
 export default tracks;
@@ -25,6 +43,7 @@ const rawAlbums = [
   {
     genre: "Synthwave",
     name: "Captured Life (2019)",
+    year: 2019,
     tracks: [
       { name: "Digital Mountains", musicSrc: `${CAPTURED_LIFE_BASE}01%20-%20Digital%20Mountains.mp3` },
       { name: "Captured Life", musicSrc: `${CAPTURED_LIFE_BASE}02%20-%20Captured%20Life.mp3` },
@@ -40,13 +59,17 @@ const rawAlbums = [
 
 export const albums = rawAlbums.map((album) => {
   const cover = album.cover || DEFAULT_COVER;
+  const albumTracks = album.tracks.map((track) => ({
+    singer: "Seth Duncan",
+    cover,
+    tags: track.tags || [],
+    ...track,
+  }));
+  const tags = [...new Set(albumTracks.flatMap((track) => track.tags))];
   return {
     ...album,
     cover,
-    tracks: album.tracks.map((track) => ({
-      singer: "Seth Duncan",
-      cover,
-      ...track,
-    })),
+    tags,
+    tracks: albumTracks,
   };
 });

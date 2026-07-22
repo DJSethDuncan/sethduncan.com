@@ -15,6 +15,16 @@ export default function AlbumCard({ album, onPlayTrack }) {
           {album.name}
           <span className={`chevron${expanded ? " expanded" : ""}`}>›</span>
         </span>
+        <span className="trackYear">{album.year}</span>
+        {album.tags.length > 0 && (
+          <span className="tagList">
+            {album.tags.map((tag) => (
+              <span className="tagPill" key={tag}>
+                {tag}
+              </span>
+            ))}
+          </span>
+        )}
       </button>
       {expanded && (
         <div className="albumTracklist">
