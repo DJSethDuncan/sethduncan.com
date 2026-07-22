@@ -42,7 +42,7 @@ const CAPTURED_LIFE_BASE =
 const rawAlbums = [
   {
     genre: "Synthwave",
-    name: "Captured Life (2019)",
+    name: "Captured Life",
     year: 2019,
     tracks: [
       { name: "Digital Mountains", musicSrc: `${CAPTURED_LIFE_BASE}01%20-%20Digital%20Mountains.mp3` },
