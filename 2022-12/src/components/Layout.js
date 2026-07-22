@@ -12,6 +12,7 @@ const PersistentPlayer = () => {
     <ReactJkMusicPlayer
       audioLists={audioLists}
       playIndex={playIndex}
+      clearPriorAudioLists
       theme="light"
       mode="full"
       autoPlay
