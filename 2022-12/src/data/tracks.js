@@ -26,6 +26,54 @@ const rawTracks = [
     musicSrc:
       "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20Anfang%201%20(1.1.08).mp3",
   },
+  {
+    genre: "DJ Sets",
+    name: "Lattice Hack Week",
+    singer: "DJ Bashful & Seth Duncan",
+    year: 2024,
+    musicSrc:
+      "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/DJ%20Bashful%20%26%20Seth%20Duncan%20-%20Lattice%20Hack%20Week%202024.mp3",
+  },
+  {
+    genre: "DJ Sets",
+    name: "Beatsgiving",
+    singer: "Seth Duncan",
+    year: 2010,
+    musicSrc:
+      "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20Beatsgiving.mp3",
+  },
+  {
+    genre: "DJ Sets",
+    name: "Clear Future",
+    singer: "Seth Duncan",
+    year: 2004,
+    musicSrc:
+      "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20Clear%20Future%20(05-01-04).mp3",
+  },
+  {
+    genre: "DJ Sets",
+    name: "DJ Debut",
+    singer: "Seth Duncan",
+    year: 2002,
+    musicSrc:
+      "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20DJ%20Debut%20(09.09.02).mp3",
+  },
+  {
+    genre: "DJ Sets",
+    name: "Fall of 07",
+    singer: "Seth Duncan",
+    year: 2007,
+    musicSrc:
+      "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20Fall%20of%2007.mp3",
+  },
+  {
+    genre: "DJ Sets",
+    name: "Renovate",
+    singer: "Seth Duncan",
+    year: 2007,
+    musicSrc:
+      "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20Renovate.mp3",
+  },
 ];
 
 const tracks = rawTracks.map((track) => ({
