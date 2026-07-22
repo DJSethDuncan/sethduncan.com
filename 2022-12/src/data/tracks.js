@@ -4,7 +4,7 @@ export const DEFAULT_COVER =
 const rawTracks = [
   {
     genre: "DJ Sets",
-    name: "Finns (DJ Set) - 12.12.2014",
+    name: "Live at Finn's",
     singer: "Seth Duncan",
     year: 2014,
     musicSrc:
@@ -12,19 +12,19 @@ const rawTracks = [
   },
   {
     genre: "DJ Sets",
-    name: "Anfang 1 (DJ Set)",
-    singer: "Seth Duncan",
-    year: 2008,
-    musicSrc:
-      "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20Anfang%201%20(1.1.08).mp3",
-  },
-  {
-    genre: "DJ Sets",
-    name: "Anfang 2 (DJ Set)",
+    name: "Anfang 2",
     singer: "Seth Duncan",
     year: 2008,
     musicSrc:
       "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20Anfang%202.mp3",
+  },
+  {
+    genre: "DJ Sets",
+    name: "Anfang 1",
+    singer: "Seth Duncan",
+    year: 2008,
+    musicSrc:
+      "https://pub-f6d8a0a86ad24f58b195e5703a09e4ab.r2.dev/Seth%20Duncan%20-%20Anfang%201%20(1.1.08).mp3",
   },
 ];
 
