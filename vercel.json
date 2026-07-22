@@ -1,0 +1,6 @@
+{
+  "installCommand": "cd 2022-12 && npm install",
+  "buildCommand": "cd 2022-12 && npm run build",
+  "outputDirectory": "2022-12/build",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
