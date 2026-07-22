@@ -1,7 +1,8 @@
 import "../styles/Music.css";
-import tracks from "../data/tracks";
+import tracks, { albums } from "../data/tracks";
 import { useMusicPlayer } from "../context/MusicPlayerContext";
 import IndividualLink from "./IndividualLink";
+import AlbumCard from "./AlbumCard";
 
 const musicServiceLinks = [
   { text: "Bandcamp", link: "https://sethduncanmusic.bandcamp.com/" },
@@ -22,7 +23,12 @@ const musicServiceLinks = [
 export default function Music() {
   const { playGenre } = useMusicPlayer();
 
-  const genres = [...new Set(tracks.map((track) => track.genre))];
+  const genres = [
+    ...new Set([
+      ...tracks.map((track) => track.genre),
+      ...albums.map((album) => album.genre),
+    ]),
+  ];
 
   return (
     <div id="musicPage">
@@ -39,10 +45,18 @@ export default function Music() {
       </div>
       {genres.map((genre) => {
         const genreTracks = tracks.filter((track) => track.genre === genre);
+        const genreAlbums = albums.filter((album) => album.genre === genre);
         return (
           <div className="genreSection" key={genre}>
             <h2 className="genreTitle">{genre}</h2>
             <div className="trackGrid">
+              {genreAlbums.map((album) => (
+                <AlbumCard
+                  key={album.name}
+                  album={album}
+                  onPlayTrack={(index) => playGenre(album.tracks, index)}
+                />
+              ))}
               {genreTracks.map((track, index) => (
                 <button
                   key={track.name}
