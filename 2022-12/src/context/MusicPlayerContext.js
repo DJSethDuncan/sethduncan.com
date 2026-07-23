@@ -6,7 +6,7 @@ export function MusicPlayerProvider({ children }) {
   const [audioLists, setAudioLists] = useState([]);
   const [playIndex, setPlayIndex] = useState(0);
 
-  const playGenre = (tracks, index = 0) => {
+  const playGroup = (tracks, index = 0) => {
     // The player forces its internal play index to 0 whenever the audioLists
     // reference changes (see clearPriorAudioLists in Layout.js), so rotate the
     // clicked track to the front instead of relying on the index prop alone.
@@ -17,7 +17,7 @@ export function MusicPlayerProvider({ children }) {
 
   return (
     <MusicPlayerContext.Provider
-      value={{ audioLists, playIndex, setPlayIndex, playGenre }}
+      value={{ audioLists, playIndex, setPlayIndex, playGroup }}
     >
       {children}
     </MusicPlayerContext.Provider>

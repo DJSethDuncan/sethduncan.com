@@ -1,7 +1,8 @@
 {
   "scripts": {
     "heroku-postbuild": "cd 2022-12 && npm install && npm run build",
-    "start": "serve -s 2022-12/build -l $PORT"
+    "start": "serve -s 2022-12/build -l $PORT",
+    "dev": "cd 2022-12 && npm install && npm start"
   },
   "dependencies": {
     "serve": "^14.2.1"

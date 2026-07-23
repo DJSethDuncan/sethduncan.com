@@ -21,12 +21,12 @@ const musicServiceLinks = [
 ];
 
 export default function Music() {
-  const { playGenre } = useMusicPlayer();
+  const { playGroup } = useMusicPlayer();
 
-  const genres = [
+  const group = [
     ...new Set([
-      ...tracks.map((track) => track.genre),
-      ...albums.map((album) => album.genre),
+      ...albums.map((album) => album.group),
+      ...tracks.map((track) => track.group),
     ]),
   ];
 
@@ -43,33 +43,33 @@ export default function Music() {
           />
         ))}
       </div>
-      {genres.map((genre) => {
-        const genreTracks = tracks.filter((track) => track.genre === genre);
-        const genreAlbums = albums.filter((album) => album.genre === genre);
+      {group.map((group) => {
+        const groupTracks = tracks.filter((track) => track.group === group);
+        const groupAlbums = albums.filter((album) => album.group === group);
         const entries = [
-          ...genreAlbums.map((album) => ({ type: "album", album })),
-          ...genreTracks.map((track) => ({ type: "track", track })),
+          ...groupAlbums.map((album) => ({ type: "album", album })),
+          ...groupTracks.map((track) => ({ type: "track", track })),
         ].sort((a, b) => {
           const yearA = a.type === "album" ? a.album.year : a.track.year;
           const yearB = b.type === "album" ? b.album.year : b.track.year;
           return yearB - yearA;
         });
         return (
-          <div className="genreSection" key={genre}>
-            <h2 className="genreTitle">{genre}</h2>
+          <div className="groupection" key={group}>
+            <h2 className="groupTitle">{group}</h2>
             <div className="trackGrid">
               {entries.map((entry) =>
                 entry.type === "album" ? (
                   <AlbumCard
                     key={entry.album.name}
                     album={entry.album}
-                    onPlayTrack={(index) => playGenre(entry.album.tracks, index)}
+                    onPlayTrack={(index) => playGroup(entry.album.tracks, index)}
                   />
                 ) : (
                   <button
                     key={entry.track.name}
                     className="trackCard"
-                    onClick={() => playGenre(genreTracks, genreTracks.indexOf(entry.track))}
+                    onClick={() => playGroup(groupTracks, groupTracks.indexOf(entry.track))}
                   >
                     <img src={entry.track.cover} alt={entry.track.name} />
                     <span className="trackName">{entry.track.name}</span>
