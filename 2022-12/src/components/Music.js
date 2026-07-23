@@ -1,4 +1,5 @@
 import "../styles/Music.css";
+import { Link } from "react-router-dom";
 import tracks, { albums } from "../data/tracks";
 import { useMusicPlayer } from "../context/MusicPlayerContext";
 import IndividualLink from "./IndividualLink";
@@ -32,6 +33,9 @@ export default function Music() {
 
   return (
     <div id="musicPage">
+      <Link to="/" className="homeLink">
+        ← Home
+      </Link>
       <h1 className="musicTitle">Music</h1>
       <div className="musicServiceLinks">
         {musicServiceLinks.map((service) => (
