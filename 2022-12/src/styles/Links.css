@@ -4,3 +4,12 @@
   justify-content: space-around;
   text-align: right;
 }
+
+@media (max-width: 600px) {
+  .linksContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    text-align: left;
+  }
+}

@@ -63,3 +63,23 @@
 #aboutText strong {
   padding-right: 8px;
 }
+
+/* Below this width the header's row layout (large title + right-aligned nav
+   column, side by side) has no room to breathe -- there are no other media
+   queries anywhere in this codebase, so the desktop layout was the only
+   layout on every screen size. */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .titleContainer {
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+
+  .headerTitle {
+    font-size: 28px;
+  }
+}
