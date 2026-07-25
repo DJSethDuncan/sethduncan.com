@@ -4,13 +4,13 @@ export default function Home() {
   return (
     <>
       <header className="header">
-        <div class="titleContainer">
-          <p class="headerTitle">Seth Duncan</p>
+        <div className="titleContainer">
+          <p className="headerTitle">Seth Duncan</p>
         </div>
 
         <Links />
       </header>
-      <div class="separator">
+      <div className="separator">
         <hr />
       </div>
       <div id="aboutText">
