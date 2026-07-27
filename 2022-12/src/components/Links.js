@@ -3,7 +3,7 @@ import IndividualLink from "./IndividualLink";
 
 export default function Links() {
   return (
-    <div class="linksContainer">
+    <div className="linksContainer">
       <IndividualLink
         link="https://sethduncan.wordpress.com/"
         text="Blog"
