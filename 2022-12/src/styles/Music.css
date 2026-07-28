@@ -41,6 +41,7 @@
 }
 
 .trackCard {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,11 +79,45 @@
   text-align: center;
 }
 
-.trackNote {
-  display: block;
-  margin-top: 2px;
-  font-size: 10px;
-  color: #999;
+.notesPopup {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(calc(-50% + var(--popup-offset, 0px)));
+  width: max-content;
+  max-width: 200px;
+  background: #222;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 10;
+}
+
+.notesPopup::after {
+  /* Counter-shifts by the same amount .notesPopup was nudged (see
+     NotesPopup.js), so the arrow stays pointing at the button that
+     triggered it instead of drifting with the box's edge correction. */
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(calc(-50% - var(--popup-offset, 0px)));
+  border: 5px solid transparent;
+  border-top-color: #222;
+}
+
+.trackCard:hover .notesPopup,
+.trackCard:focus .notesPopup,
+.albumTrackRow:hover .notesPopup,
+.albumTrackRow:focus .notesPopup {
+  opacity: 1;
 }
 
 .tagList {
@@ -138,6 +173,7 @@
 }
 
 .albumTrackRow {
+  position: relative;
   display: flex;
   gap: 10px;
   background: none;
@@ -164,10 +200,4 @@
 .albumTrackText {
   display: flex;
   flex-direction: column;
-}
-
-.albumTrackNote {
-  font-size: 11px;
-  color: #999;
-  margin-top: 2px;
 }

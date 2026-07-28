@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NotesPopup } from "./NotesPopup";
 
 export default function AlbumCard({ album, onPlayTrack }) {
   const [expanded, setExpanded] = useState(false);
@@ -37,9 +38,7 @@ export default function AlbumCard({ album, onPlayTrack }) {
               <span className="albumTrackNumber">{index + 1}</span>
               <span className="albumTrackText">
                 <span className="albumTrackName">{track.name}</span>
-                {track.note && (
-                  <span className="albumTrackNote">{track.note}</span>
-                )}
+                {track.notes && <NotesPopup text={track.notes} />}
               </span>
             </button>
           ))}
