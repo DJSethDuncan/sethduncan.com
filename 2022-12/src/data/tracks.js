@@ -126,6 +126,7 @@ const tracks = rawTracks.map((track) => ({
   ...track,
   cover: track.cover || DEFAULT_COVER,
   tags: track.tags || [],
+  notes: track.notes || track.name,
 }));
 
 export default tracks;
@@ -202,6 +203,7 @@ export const albums = rawAlbums.map((album) => {
     cover,
     tags: track.tags || tags,
     ...track,
+    notes: track.notes || album.name,
   }));
   return {
     ...album,

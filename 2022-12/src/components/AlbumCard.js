@@ -37,8 +37,8 @@ export default function AlbumCard({ album, onPlayTrack }) {
               <span className="albumTrackNumber">{index + 1}</span>
               <span className="albumTrackText">
                 <span className="albumTrackName">{track.name}</span>
-                {track.note && (
-                  <span className="albumTrackNote">{track.note}</span>
+                {track.notes && (
+                  <span className="notesPopup">{track.notes}</span>
                 )}
               </span>
             </button>

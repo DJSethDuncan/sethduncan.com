@@ -78,8 +78,8 @@ export default function Music() {
                     <img src={entry.track.cover} alt={entry.track.name} />
                     <span className="trackName">{entry.track.name}</span>
                     <span className="trackYear">{entry.track.year}</span>
-                    {entry.track.note && (
-                      <span className="trackNote">{entry.track.note}</span>
+                    {entry.track.notes && (
+                      <span className="notesPopup">{entry.track.notes}</span>
                     )}
                     {entry.track.tags.length > 0 && (
                       <span className="tagList">
