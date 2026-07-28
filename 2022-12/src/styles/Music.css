@@ -83,7 +83,7 @@
   position: absolute;
   bottom: calc(100% + 8px);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(calc(-50% + var(--popup-offset, 0px)));
   width: max-content;
   max-width: 200px;
   background: #222;
@@ -101,17 +101,22 @@
 }
 
 .notesPopup::after {
+  /* Counter-shifts by the same amount .notesPopup was nudged (see
+     NotesPopup.js), so the arrow stays pointing at the button that
+     triggered it instead of drifting with the box's edge correction. */
   content: "";
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(calc(-50% - var(--popup-offset, 0px)));
   border: 5px solid transparent;
   border-top-color: #222;
 }
 
 .trackCard:hover .notesPopup,
-.albumTrackRow:hover .notesPopup {
+.trackCard:focus .notesPopup,
+.albumTrackRow:hover .notesPopup,
+.albumTrackRow:focus .notesPopup {
   opacity: 1;
 }
 

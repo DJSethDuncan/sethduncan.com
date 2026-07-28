@@ -4,6 +4,7 @@ import tracks, { albums } from "../data/tracks";
 import { useMusicPlayer } from "../context/MusicPlayerContext";
 import IndividualLink from "./IndividualLink";
 import AlbumCard from "./AlbumCard";
+import { NotesPopup } from "./NotesPopup";
 
 const musicServiceLinks = [
   { text: "Bandcamp", link: "https://sethduncanmusic.bandcamp.com/" },
@@ -78,9 +79,7 @@ export default function Music() {
                     <img src={entry.track.cover} alt={entry.track.name} />
                     <span className="trackName">{entry.track.name}</span>
                     <span className="trackYear">{entry.track.year}</span>
-                    {entry.track.notes && (
-                      <span className="notesPopup">{entry.track.notes}</span>
-                    )}
+                    {entry.track.notes && <NotesPopup text={entry.track.notes} />}
                     {entry.track.tags.length > 0 && (
                       <span className="tagList">
                         {entry.track.tags.map((tag) => (
