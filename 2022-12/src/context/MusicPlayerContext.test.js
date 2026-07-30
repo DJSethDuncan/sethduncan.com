@@ -1,6 +1,31 @@
-import { loadSavedPlaybackState } from "./MusicPlayerContext";
+import { loadSavedPlaybackState, rotateTracks } from "./MusicPlayerContext";
 
 const STORAGE_KEY = "musicPlaybackState";
+
+describe("rotateTracks", () => {
+  it("rotates the clicked track to the front", () => {
+    // REGRESSION-SHAPED: the player resets its own play index to 0
+    // whenever the audioLists array reference changes, so the clicked
+    // track has to actually be first in the returned array -- passing
+    // the original array with just an index prop wouldn't play the
+    // right track.
+    expect(rotateTracks(["a", "b", "c", "d"], 2)).toEqual(["c", "d", "a", "b"]);
+  });
+
+  it("is a no-op when index is 0", () => {
+    expect(rotateTracks(["a", "b", "c"], 0)).toEqual(["a", "b", "c"]);
+  });
+
+  it("wraps the last track around to still put it first", () => {
+    expect(rotateTracks(["a", "b", "c"], 2)).toEqual(["c", "a", "b"]);
+  });
+
+  it("does not mutate the original array", () => {
+    const original = ["a", "b", "c"];
+    rotateTracks(original, 1);
+    expect(original).toEqual(["a", "b", "c"]);
+  });
+});
 
 describe("loadSavedPlaybackState", () => {
   afterEach(() => {

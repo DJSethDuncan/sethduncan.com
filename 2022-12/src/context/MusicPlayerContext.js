@@ -5,6 +5,15 @@ const MusicPlayerContext = createContext(null);
 const STORAGE_KEY = "musicPlaybackState";
 const SAVE_INTERVAL_MS = 10_000;
 
+// The player forces its internal play index to 0 whenever the audioLists
+// reference changes (see clearPriorAudioLists in Layout.js), so playGroup
+// rotates the clicked track to the front instead of relying on the index
+// prop alone. Extracted so this array math is testable without rendering
+// the provider.
+export function rotateTracks(tracks, index) {
+  return [...tracks.slice(index), ...tracks.slice(0, index)];
+}
+
 export function loadSavedPlaybackState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -32,12 +41,8 @@ export function MusicPlayerProvider({ children }) {
   const lastSaveTimestamp = useRef(0);
 
   const playGroup = (tracks, index = 0) => {
-    // The player forces its internal play index to 0 whenever the audioLists
-    // reference changes (see clearPriorAudioLists in Layout.js), so rotate the
-    // clicked track to the front instead of relying on the index prop alone.
-    const rotated = [...tracks.slice(index), ...tracks.slice(0, index)];
     pendingSeekTime.current = null;
-    setAudioLists(rotated);
+    setAudioLists(rotateTracks(tracks, index));
     setPlayIndex(0);
   };
 
