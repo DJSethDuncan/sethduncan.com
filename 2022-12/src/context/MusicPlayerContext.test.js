@@ -1,6 +1,31 @@
-import { loadSavedPlaybackState } from "./MusicPlayerContext";
+import { loadSavedPlaybackState, rotateToIndex } from "./MusicPlayerContext";
 
 const STORAGE_KEY = "musicPlaybackState";
+
+describe("rotateToIndex", () => {
+  const tracks = ["a", "b", "c", "d"];
+
+  it("returns the list unchanged when the clicked track is already first", () => {
+    expect(rotateToIndex(tracks, 0)).toEqual(["a", "b", "c", "d"]);
+  });
+
+  it("moves the clicked track to the front, wrapping the preceding tracks to the end", () => {
+    // REGRESSION: playGroup relies on this rotation (not the raw index) to put
+    // the clicked track at position 0, since the player resets its internal
+    // play index to 0 whenever audioLists changes.
+    expect(rotateToIndex(tracks, 2)).toEqual(["c", "d", "a", "b"]);
+  });
+
+  it("rotates the last track to the front", () => {
+    expect(rotateToIndex(tracks, 3)).toEqual(["d", "a", "b", "c"]);
+  });
+
+  it("doesn't mutate the original array", () => {
+    const original = [...tracks];
+    rotateToIndex(tracks, 2);
+    expect(tracks).toEqual(original);
+  });
+});
 
 describe("loadSavedPlaybackState", () => {
   afterEach(() => {
