@@ -17,8 +17,13 @@ export function NotesPopup({ text }) {
       if (!el) return;
       // Reset to the neutral centered position before measuring, so a
       // correction from a previous layout (e.g. before a resize) doesn't
-      // compound into the new one.
-      el.style.transform = "translateX(-50%)";
+      // compound into the new one. This must go through the same
+      // --popup-offset custom property that the stylesheet's transform
+      // reads (rather than setting el.style.transform directly), since a
+      // direct inline `transform` would permanently win over the
+      // stylesheet's rule on every future render and make the corrective
+      // offset computed below a no-op.
+      el.style.setProperty("--popup-offset", "0px");
       const rect = el.getBoundingClientRect();
       let correction = 0;
       if (rect.left < VIEWPORT_MARGIN) {

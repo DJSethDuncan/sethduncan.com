@@ -48,4 +48,18 @@ describe("NotesPopup", () => {
     render(<NotesPopup text="Hello" />);
     expect(screen.getByText("Hello").style.getPropertyValue("--popup-offset")).toBe("0px");
   });
+
+  it("never leaves a direct inline transform that would override the stylesheet's corrective transform", () => {
+    // REGRESSION: reposition() used to reset the measurement baseline via
+    // `el.style.transform = "translateX(-50%)"`, a direct DOM mutation that
+    // is never cleared afterward. Inline styles always beat stylesheet
+    // rules, so the CSS rule that actually applies --popup-offset via
+    // `transform: translateX(calc(-50% + var(--popup-offset)))` was
+    // permanently shadowed -- the offset was computed correctly but never
+    // visually applied. The reset must go through --popup-offset instead.
+    mockRect({ left: -20, right: 80 });
+    render(<NotesPopup text="Hello" />);
+    expect(screen.getByText("Hello").style.transform).toBe("");
+    expect(screen.getByText("Hello").style.getPropertyValue("--popup-offset")).toBe("28px");
+  });
 });
