@@ -19,10 +19,26 @@ export function loadSavedPlaybackState() {
   }
 }
 
+// The player forces its internal play index to 0 whenever the audioLists
+// reference changes (see clearPriorAudioLists / playGroup below) -- so
+// restoring a saved playIndex by simply passing it through as a separate
+// prop doesn't work: the very first render with a real audioLists array IS
+// a reference change, and the library silently resets to 0 regardless of
+// what playIndex says. Rotating the saved track to the front (same trick
+// playGroup uses) is what actually makes the resumed track the one that
+// plays, rather than always resuming whichever track happened to be first.
+function rotateToIndex(list, index) {
+  if (list.length === 0) return list;
+  const safeIndex = ((index % list.length) + list.length) % list.length;
+  return [...list.slice(safeIndex), ...list.slice(0, safeIndex)];
+}
+
 export function MusicPlayerProvider({ children }) {
   const saved = useRef(loadSavedPlaybackState()).current;
-  const [audioLists, setAudioLists] = useState(saved?.audioLists ?? []);
-  const [playIndex, setPlayIndex] = useState(saved?.playIndex ?? 0);
+  const [audioLists, setAudioLists] = useState(
+    saved ? rotateToIndex(saved.audioLists, saved.playIndex ?? 0) : []
+  );
+  const [playIndex, setPlayIndex] = useState(0);
 
   // Position to seek to once the resumed track starts playing. Cleared as
   // soon as it's used (or as soon as the user picks a new track directly).
@@ -32,12 +48,12 @@ export function MusicPlayerProvider({ children }) {
   const lastSaveTimestamp = useRef(0);
 
   const playGroup = (tracks, index = 0) => {
-    // The player forces its internal play index to 0 whenever the audioLists
-    // reference changes (see clearPriorAudioLists in Layout.js), so rotate the
-    // clicked track to the front instead of relying on the index prop alone.
-    const rotated = [...tracks.slice(index), ...tracks.slice(0, index)];
+    // See clearPriorAudioLists in Layout.js and rotateToIndex above -- the
+    // player forces its internal play index to 0 on every audioLists
+    // reference change, so rotate the clicked track to the front instead of
+    // relying on the index prop alone.
     pendingSeekTime.current = null;
-    setAudioLists(rotated);
+    setAudioLists(rotateToIndex(tracks, index));
     setPlayIndex(0);
   };
 
