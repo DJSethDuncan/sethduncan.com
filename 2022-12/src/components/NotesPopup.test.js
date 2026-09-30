@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { NotesPopup } from "./NotesPopup";
 
 function mockRect(rect) {
@@ -61,5 +61,31 @@ describe("NotesPopup", () => {
     render(<NotesPopup text="Hello" />);
     expect(screen.getByText("Hello").style.transform).toBe("");
     expect(screen.getByText("Hello").style.getPropertyValue("--popup-offset")).toBe("28px");
+  });
+
+  it("recomputes the offset when the window is resized", () => {
+    // The component's own comment says the correction is "recomputed on
+    // resize", but every other test here only exercises the initial-render
+    // computation -- the window resize listener itself (the whole reason
+    // this effect subscribes to "resize" rather than just running once) had
+    // no coverage.
+    mockRect({ left: 400, right: 600 }); // fits comfortably at first
+    render(<NotesPopup text="Hello" />);
+    expect(screen.getByText("Hello").style.getPropertyValue("--popup-offset")).toBe("0px");
+
+    mockRect({ left: -20, right: 80 }); // now overflows the left edge
+    fireEvent(window, new Event("resize"));
+    expect(screen.getByText("Hello").style.getPropertyValue("--popup-offset")).toBe("28px");
+  });
+
+  it("stops repositioning on resize after unmount", () => {
+    // REGRESSION-SHAPED: the effect's cleanup removes the "resize" listener
+    // on unmount -- confirm a resize after unmount doesn't throw (e.g. from
+    // touching a ref.current that's already null) and doesn't leave a
+    // dangling listener still trying to measure a detached element.
+    mockRect({ left: 400, right: 600 });
+    const { unmount } = render(<NotesPopup text="Hello" />);
+    unmount();
+    expect(() => fireEvent(window, new Event("resize"))).not.toThrow();
   });
 });
